@@ -1,0 +1,11 @@
+{
+	"id": "crypt-it",
+	"name": "Crypt It",
+	"version": "0.9.1",
+	"minAppVersion": "0.15.0",
+	"description": "Generate enryption version of file(s) using age-encryptiopn format.",
+	"author": "fyears",
+	"authorUrl": "https://github.com/fyears",
+	"fundingUrl": "https://github.com/remotely-save/donation",
+	"isDesktopOnly": false
+}
