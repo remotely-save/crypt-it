@@ -16,6 +16,7 @@ async function decryptSingleFile(input: ArrayBuffer, password: string) {
 		const res = await c.decryptData(new Uint8Array(input));
 		return res;
 	} catch (error) {
+		console.log(error);
 		throw new Error("Could not decrypt message");
 	}
 }
