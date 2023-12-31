@@ -1,7 +1,7 @@
 {
 	"id": "crypt-it",
 	"name": "Crypt It",
-	"version": "0.9.1",
+	"version": "0.9.2",
 	"minAppVersion": "0.15.0",
 	"description": "Generate enryption version of file(s) using age-encryptiopn format.",
 	"author": "fyears",
