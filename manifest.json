@@ -1,7 +1,7 @@
 {
 	"id": "crypt-it",
 	"name": "Crypt It",
-	"version": "0.9.4",
+	"version": "0.9.5",
 	"minAppVersion": "0.15.0",
 	"description": "Generate encrypted version of file(s) using rclone encryptiopn format.",
 	"author": "fyears",
