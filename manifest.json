@@ -1,9 +1,9 @@
 {
 	"id": "crypt-it",
 	"name": "Crypt It",
-	"version": "0.9.3",
+	"version": "0.9.4",
 	"minAppVersion": "0.15.0",
-	"description": "Generate enryption version of file(s) using rclone encryptiopn format.",
+	"description": "Generate encrypted version of file(s) using rclone encryptiopn format.",
 	"author": "fyears",
 	"authorUrl": "https://github.com/fyears",
 	"fundingUrl": "https://github.com/remotely-save/donation",

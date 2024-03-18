@@ -1,28 +1,15 @@
 import {
 	App,
-	Editor,
-	Menu,
 	MarkdownView,
 	Modal,
 	Notice,
 	Plugin,
-	PluginSettingTab,
 	Setting,
 	TFolder,
 } from "obsidian";
 
 // @ts-ignore
 import EncryptWorker from "./encrypt.worker";
-
-interface CryptItSettings {
-	password?: string;
-	key?: string;
-}
-
-const DEFAULT_SETTINGS: CryptItSettings = {
-	password: "",
-	key: "",
-};
 
 async function encryptionByCallingWorker(
 	worker: Worker,
@@ -91,17 +78,14 @@ async function decryptionByCallingWorker(
 			return;
 		}
 		await app.vault.adapter.writeBinary(newFileName, output!);
-		new Notice(`Finish encrypting ${filePath}`);
+		new Notice(`Finish decrypting ${filePath}`);
 	};
 }
 
 export default class CryptItPlugin extends Plugin {
-	settings!: CryptItSettings;
 	worker!: Worker;
 
 	async onload() {
-		await this.loadSettings();
-
 		this.worker = new (EncryptWorker as any)() as Worker;
 
 		this.addCommand({
@@ -148,8 +132,8 @@ export default class CryptItPlugin extends Plugin {
 
 				menu.addItem((item) => {
 					item
-						.setTitle("Generate encryption version!!")
-						.setIcon("document")
+						.setTitle("Generate encrypted version!")
+						.setIcon("lock")
 						.onClick(async () => {
 							const filePath = file.path;
 							new AskingPasswordModal(this.app, filePath, (result) => {
@@ -180,8 +164,8 @@ export default class CryptItPlugin extends Plugin {
 
 				menu.addItem((item) => {
 					item
-						.setTitle("Try to decrypt this file!!")
-						.setIcon("document")
+						.setTitle("Try to decrypt this file!")
+						.setIcon("key-square")
 						.onClick(async () => {
 							const filePath = file.path;
 							new AskingPasswordModal(this.app, filePath, (result) => {
@@ -197,16 +181,16 @@ export default class CryptItPlugin extends Plugin {
 			})
 		);
 
-		this.app.workspace.on("files-menu", (menu, files) => {
-			// multi selection not supported yet
-		});
+		// this.app.workspace.on("files-menu", (menu, files) => {
+		// 	// multi selection not supported yet
+		// });
 
 		this.registerEvent(
 			this.app.workspace.on("editor-menu", (menu, editor, view) => {
 				menu.addItem((item) => {
 					item
-						.setTitle("Generate encryption version!!")
-						.setIcon("document")
+						.setTitle("Generate encrypted version")
+						.setIcon("lock")
 						.onClick(async () => {
 							const filePath = (view as MarkdownView)!.file!.path as string;
 
@@ -230,14 +214,6 @@ export default class CryptItPlugin extends Plugin {
 	}
 
 	onunload() {}
-
-	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-	}
-
-	async saveSettings() {
-		await this.saveData(this.settings);
-	}
 }
 
 class AskingPasswordModal extends Modal {

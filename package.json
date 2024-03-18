@@ -1,7 +1,7 @@
 {
 	"name": "crypt-it",
-	"version": "0.9.3",
-	"description": "Generate enryption version of file(s) using rclone encryption format.",
+	"version": "0.9.4",
+	"description": "Generate encrypted version of file(s) using rclone encryption format.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
