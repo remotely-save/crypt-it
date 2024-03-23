@@ -3,14 +3,14 @@ import { Cipher } from "@fyears/rclone-crypt";
 const ctx: WorkerGlobalScope = self as any;
 
 async function cryptSingleFile(input: ArrayBuffer, password: string) {
-	const c = new Cipher();
+	const c = new Cipher("base32");
 	await c.key(password, "");
 	const res = await c.encryptData(new Uint8Array(input), undefined);
 	return res;
 }
 
 async function decryptSingleFile(input: ArrayBuffer, password: string) {
-	const c = new Cipher();
+	const c = new Cipher("base32");
 	await c.key(password, "");
 	try {
 		const res = await c.decryptData(new Uint8Array(input));

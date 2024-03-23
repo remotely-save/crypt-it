@@ -1,6 +1,6 @@
 {
 	"name": "crypt-it",
-	"version": "0.9.7",
+	"version": "0.9.8",
 	"description": "Generate encrypted version of file(s) using rclone encryption format.",
 	"main": "main.js",
 	"scripts": {
@@ -35,7 +35,7 @@
 		"worker-loader": "^3.0.8"
 	},
 	"dependencies": {
-		"@fyears/rclone-crypt": "^0.0.2"
+		"@fyears/rclone-crypt": "^0.0.6"
 	},
 	"browser": {
 		"crypto": false
